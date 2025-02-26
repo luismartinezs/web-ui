@@ -164,11 +164,11 @@ def get_llm_model(provider: str, **kwargs):
 # Predefined model names for common providers
 model_names = {
     "anthropic": ["claude-3-5-sonnet-20241022", "claude-3-5-sonnet-20240620", "claude-3-opus-20240229"],
-    "openai": ["gpt-4o", "gpt-4", "gpt-3.5-turbo", "o3-mini"],
+    "openai": ["gpt-4o", "gpt-4", "gpt-3.5-turbo", "o3-mini", "gpt-4o-mini"],
     "deepseek": ["deepseek-chat", "deepseek-reasoner"],
     "google": ["gemini-2.0-flash", "gemini-2.0-flash-thinking-exp", "gemini-1.5-flash-latest", "gemini-1.5-flash-8b-latest", "gemini-2.0-flash-thinking-exp-01-21", "gemini-2.0-pro-exp-02-05"],
     "ollama": ["qwen2.5:7b", "qwen2.5:14b", "qwen2.5:32b", "qwen2.5-coder:14b", "qwen2.5-coder:32b", "llama2:7b", "deepseek-r1:14b", "deepseek-r1:32b"],
-    "azure_openai": ["gpt-4o", "gpt-4", "gpt-3.5-turbo"],
+    "azure_openai": ["gpt-4o", "gpt-4", "gpt-3.5-turbo", "gpt-4o-mini"],
     "mistral": ["pixtral-large-latest", "mistral-large-latest", "mistral-small-latest", "ministral-8b-latest"],
     "alibaba": ["qwen-plus", "qwen-max", "qwen-turbo", "qwen-long"],
     "moonshot": ["moonshot-v1-32k-vision-preview", "moonshot-v1-8k-vision-preview"],
@@ -212,7 +212,7 @@ def encode_image(img_path):
 def get_latest_files(directory: str, file_types: list = ['.webm', '.zip']) -> Dict[str, Optional[str]]:
     """Get the latest recording and trace files"""
     latest_files: Dict[str, Optional[str]] = {ext: None for ext in file_types}
-    
+
     if not os.path.exists(directory):
         os.makedirs(directory, exist_ok=True)
         return latest_files
@@ -227,7 +227,7 @@ def get_latest_files(directory: str, file_types: list = ['.webm', '.zip']) -> Di
                     latest_files[file_type] = str(latest)
         except Exception as e:
             print(f"Error getting latest {file_type} file: {e}")
-            
+
     return latest_files
 async def capture_screenshot(browser_context):
     """Capture and encode a screenshot"""

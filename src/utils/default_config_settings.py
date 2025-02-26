@@ -13,7 +13,7 @@ def default_config():
         "use_vision": True,
         "tool_calling_method": "auto",
         "llm_provider": "openai",
-        "llm_model_name": "gpt-4o",
+        "llm_model_name": "gpt-4o-mini",
         "llm_num_ctx": 32000,
         "llm_temperature": 1.0,
         "llm_base_url": "",
